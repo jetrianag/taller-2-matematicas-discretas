@@ -1,1 +1,1 @@
-# taller-2-matem-ticas-discretas
+# taller-2-matematicas-discretas
