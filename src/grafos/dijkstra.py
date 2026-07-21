@@ -19,8 +19,8 @@ g.add_edge("Estadio", "Terminal", 11)
 g.add_edge("Terminal", "Parque", 6)
 
 # Se define un punto A y B arbitrarios como el inicio y el final de un camino a analizar
-origen = "Portal"
-destino = "Parque"
+origen = "Museo"
+destino = "Universidad"
 
 # Se llama el método dijkstra para obtener la distancia mínima del camino
 distancias, anterior = g.dijkstra(origen)
