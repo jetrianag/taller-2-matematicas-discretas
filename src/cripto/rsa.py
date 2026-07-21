@@ -18,3 +18,11 @@ def generar_llaves(p: int, q: int, e: int) -> dict:
     phi = (p - 1) * (q - 1)
     d = inverso_modular(e, phi)
     return {"p": p, "q": q, "n": n, "phi": phi, "e": e, "d": d}
+
+def cifrar_rsa(mensaje: int, e: int, n: int) -> int:
+    if mensaje >= n:
+        raise ValueError(f"El mensaje M debe ser menor que n para que RSA funcione correctamente.")
+    return pow(mensaje, e, n)
+
+def descifrar_rsa(cifrado: int, d: int, n: int) -> int:
+    return pow(cifrado, d, n)
