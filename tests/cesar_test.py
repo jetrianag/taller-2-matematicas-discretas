@@ -11,4 +11,10 @@ class TestCesar(unittest.TestCase):
         #caso minimo que estaba en el taller
         self.assertEqual(cifrar_cesar("HOLA UNAL", 3), "KROD XQDO")
 
+   def test_descifrado_es_inverso_del_cifrado(self):
+        texto_original = "HOLA, Mundo 2026"
+        k = 7
+        cifrado = cifrar_cesar(texto_original, k)
+        self.assertEqual(descifrar_cesar(cifrado, k), texto_original)
+
     
