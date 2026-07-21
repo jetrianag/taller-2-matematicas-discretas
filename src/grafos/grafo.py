@@ -1,9 +1,14 @@
+# Libreria para manejar colas de prioridad en Dijkstra, pero sin reemplazar la logica del algoritmo
 import heapq
 
+# Todo lo relacionado con el grafo, incluyendo la implementación del algoritmo de Dijkstra y la reconstrucción del camino más corto.
 class grafo:
+
+    # Inicializa un grafo vacío
     def __init__(self):
         self.vertices = {}
 
+    # Crea los vértices y sus aristas con pesos
     def add_edge(self, origen, destino, peso):
         if origen not in self.vertices:
             self.vertices[origen] = []
@@ -12,7 +17,8 @@ class grafo:
 
         self.vertices[origen].append((destino, peso))
         self.vertices[destino].append((origen, peso))
-
+    
+    # Lógica del algoritmo para encontrar la ruta más corta
     def dijkstra(self, origen):
         distancias = {v: float('inf') for v in self.vertices}
         distancias[origen] = 0
@@ -34,9 +40,9 @@ class grafo:
                     distancias[vecino] = nueva_dist
                     anterior[vecino] = actual
                     heapq.heappush(cola, (nueva_dist, vecino))
+        return distancias, anterior
 
-    return distancias, anterior
-
+# Arma la lista de estaciones especificas que forman el camino más corto
 def reconstruir_camino(anterior, origen, destino):
     camino = [destino]
     actual = destino
