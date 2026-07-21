@@ -29,4 +29,14 @@ class TestCesar(unittest.TestCase):
         cifrado = cifrar_cesar("aA", 1)
         self.assertEqual(cifrado, "bB")
 
-    
+    def test_fuerza_bruta_incluye_la_solucion_correcta(self):
+        texto_original = "MATEMATICAS DISCRETAS"
+        k_real = 11
+        cifrado = cifrar_cesar(texto_original, k_real)
+        resultados = fuerza_bruta_cesar(cifrado)
+        self.assertEqual(len(resultados), 26)
+        self.assertEqual(resultados[k], texto_original)
+
+
+if __name__ == '__main__':
+    unittest.main() 
