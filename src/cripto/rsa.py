@@ -12,3 +12,9 @@ def inverso_modular(e: int, phi: int) -> int:
         raise ValueError(f"e={e} no es válido: mcd(e, phi(n))={g} (debe ser 1). "
             "Elige otro exponente e primo relativo con phi(n).")
     return x % phi
+
+def generar_llaves(p: int, q: int, e: int) -> dict:
+    n = p * q
+    phi = (p - 1) * (q - 1)
+    d = inverso_modular(e, phi)
+    return {"p": p, "q": q, "n": n, "phi": phi, "e": e, "d": d}
