@@ -25,4 +25,8 @@ class TestCesar(unittest.TestCase):
             if not original_c.isalpha():
                 self.assertEqual(original_c, cifrado_c)
     
-   
+    def test_mayusculas_y_minusculas_independientes(self):
+        cifrado = cifrar_cesar("aA", 1)
+        self.assertEqual(cifrado, "bB")
+
+    
