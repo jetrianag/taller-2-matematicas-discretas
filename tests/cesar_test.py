@@ -17,4 +17,12 @@ class TestCesar(unittest.TestCase):
         cifrado = cifrar_cesar(texto_original, k)
         self.assertEqual(descifrar_cesar(cifrado, k), texto_original)
 
+    def test_conserva_puntuacion_numeros_y_espacios(self):
+        original = "Clase: 8:00 am, sala #3"
+        k = 5
+        cifrado = cifrar_cesar(original, k)
+        for original_c, cifrado_c in zip(original, cifrado):
+            if not original_c.isalpha():
+                self.assertEqual(original_c, cifrado_c)
     
+   
