@@ -35,7 +35,7 @@ class TestCesar(unittest.TestCase):
         cifrado = cifrar_cesar(texto_original, k_real)
         resultados = fuerza_bruta_cesar(cifrado)
         self.assertEqual(len(resultados), 26)
-        self.assertEqual(resultados[k], texto_original)
+        self.assertEqual(resultados[k_real], texto_original)
 
 
 if __name__ == '__main__':
