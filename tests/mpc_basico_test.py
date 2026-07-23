@@ -27,3 +27,6 @@ class TestMPC(unittest.TestCase):
      def test_promedio_sin_notas_lanza_error(self):
         with self.assertRaises(ValueError):
             calcular_promedio(suma_total=0, cantidad_notas=0)
+
+if __name__ == "__main__":
+    unittest.main()
