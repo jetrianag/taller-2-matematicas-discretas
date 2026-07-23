@@ -23,3 +23,7 @@ class TestMPC(unittest.TestCase):
         nota = 45
         s1, s2, s3 = generar_partes(nota, M)
         self.assertTrue(s1 != nota or s2 != nota or s3 != nota)
+
+     def test_promedio_sin_notas_lanza_error(self):
+        with self.assertRaises(ValueError):
+            calcular_promedio(suma_total=0, cantidad_notas=0)
