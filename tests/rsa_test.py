@@ -34,5 +34,5 @@ class TestRSA(unittest.TestCase):
             C = cifrar_rsa(M, llaves["e"], llaves["n"])
             self.assertEqual(descifrar_rsa(C, llaves["d"], llaves["n"]), M)
 
-    if __name__ == "__main__":
+if __name__ == "__main__":
     unittest.main()
