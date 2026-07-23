@@ -44,3 +44,39 @@ def simular_protocolo(notas: list, M: int = MODULO_POR_DEFECTO) -> dict:
         "suma_total": suma_total,
         "promedio": promedio,
     }
+
+def _menu():
+    while True:
+        print("\n--- MPC básico: suma y promedio sin revelar datos ---")
+        print("1. Simular protocolo con una lista de notas")
+        print("2. Salir")
+        opcion = input("Elige una opción (1-2): ").strip()
+ 
+        if opcion == "1":
+            texto = input("Ingresa las notas separadas por coma (ej: 40,35,50,25): ")
+            try:
+                notas = [int(n.strip()) for n in texto.split(",")]
+            except ValueError:
+                print("Entrada inválida. Usa solo números separados por coma.")
+                continue
+ 
+            resultado = simular_protocolo(notas)
+            print(f"\nPartes que recibió el servidor 1: {resultado['partes_servidor1']}")
+            print(f"Partes que recibió el servidor 2: {resultado['partes_servidor2']}")
+            print(f"Partes que recibió el servidor 3: {resultado['partes_servidor3']}")
+            print(f"\nSuma parcial del servidor 1: {resultado['suma_servidor1']}")
+            print(f"Suma parcial del servidor 2: {resultado['suma_servidor2']}")
+            print(f"Suma parcial del servidor 3: {resultado['suma_servidor3']}")
+            print(f"\nSuma total reconstruida: {resultado['suma_total']}")
+            print(f"Promedio: {resultado['promedio']}")
+ 
+        elif opcion == "2":
+            print("Hasta luego.")
+            break
+ 
+        else:
+            print("Opción no válida, intenta de nuevo.")
+ 
+ 
+if __name__ == "__main__":
+    _menu()
