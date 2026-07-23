@@ -16,4 +16,10 @@ class TestRSA(unittest.TestCase):
         C = cifrar_rsa(M, llaves["e"], llaves["n"])
         self.assertEqual(C, 2790)
         self.assertEqual(descifrar_rsa(C, llaves["d"], llaves["n"]), M)
+
+    def test_euclides_extendido_identidad_bezout(self):
+        a, b = 240, 46
+        g, x, y = euclides_extendido(a, b)
+        self.assertEqual(g, 2)  # mcd(240, 46) = 2
+        self.assertEqual(a * x + b * y, g)
         
