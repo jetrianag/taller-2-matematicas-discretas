@@ -33,3 +33,6 @@ class TestRSA(unittest.TestCase):
         for M in [5, 42, 100]:
             C = cifrar_rsa(M, llaves["e"], llaves["n"])
             self.assertEqual(descifrar_rsa(C, llaves["d"], llaves["n"]), M)
+
+    if __name__ == "__main__":
+    unittest.main()
