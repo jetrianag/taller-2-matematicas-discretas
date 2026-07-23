@@ -26,3 +26,21 @@ def calcular_promedio(suma_total: int, cantidad_notas: int) -> float:
     if cantidad_notas == 0:
         raise ValueError("No hay notas para calcular el promedio.")
     return suma_total / cantidad_notas
+
+def simular_protocolo(notas: list, M: int = MODULO_POR_DEFECTO) -> dict:
+    partes1, partes2, partes3 = repartir_notas(notas, M)
+    suma1 = suma_parcial_servidor(partes1, M)
+    suma2 = suma_parcial_servidor(partes2, M)
+    suma3 = suma_parcial_servidor(partes3, M)
+    suma_total = reconstruir_suma(suma1, suma2, suma3, M)
+    promedio = calcular_promedio(suma_total, len(notas))
+    return {
+        "partes_servidor1": partes1,
+        "partes_servidor2": partes2,
+        "partes_servidor3": partes3,
+        "suma_servidor1": suma1,
+        "suma_servidor2": suma2,
+        "suma_servidor3": suma3,
+        "suma_total": suma_total,
+        "promedio": promedio,
+    }
