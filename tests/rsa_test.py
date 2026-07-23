@@ -22,4 +22,14 @@ class TestRSA(unittest.TestCase):
         g, x, y = euclides_extendido(a, b)
         self.assertEqual(g, 2)  # mcd(240, 46) = 2
         self.assertEqual(a * x + b * y, g)
-        
+
+    def test_e_invalido_lanza_error(self):
+        # Con p=61, q=53 -> phi=3120. e=6 comparte factor con phi -> inválido
+        with self.assertRaises(ValueError):
+            generar_llaves(p=61, q=53, e=6)
+
+    def test_ciclo_completo_con_otro_mensaje(self):
+        llaves = generar_llaves(p=17, q=11, e=7)  # n=187, phi=160
+        for M in [5, 42, 100]:
+            C = cifrar_rsa(M, llaves["e"], llaves["n"])
+            self.assertEqual(descifrar_rsa(C, llaves["d"], llaves["n"]), M)
