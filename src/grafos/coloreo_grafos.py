@@ -13,3 +13,8 @@ def es_coloreo_valido(grafo: dict, colores: dict) -> bool:
             if colores[vertice] == colores[vecino]:
                 return False
     return True
+def resumen_por_color(colores: dict) -> dict:
+    resumen = {}
+    for vertice, color in colores.items():
+        resumen.setdefault(color, []).append(vertice)
+    return resumen
