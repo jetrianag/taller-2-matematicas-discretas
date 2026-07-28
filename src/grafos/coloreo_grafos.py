@@ -30,3 +30,31 @@ GRAFO_EJEMPLO = {
     "Estadistica": ["Biologia", "BasesDatos"],
     "BasesDatos":  ["EstructurasDatos", "Estadistica"],
 }
+def _menu():
+    while True:
+        print("\n--- Coloreo de grafos ---")
+        print("1. Colorear el grafo de ejemplo (10 cursos)")
+        print("2. Salir")
+        opcion = input("Elige una opción (1-2): ").strip()
+ 
+        if opcion == "1":
+            colores = colorear_grafo_voraz(GRAFO_EJEMPLO)
+            valido = es_coloreo_valido(GRAFO_EJEMPLO, colores)
+            resumen = resumen_por_color(colores)
+ 
+            print(f"\n¿Coloreo válido? {valido}")
+            print(f"Colores usados: {len(resumen)}")
+            for color, vertices in sorted(resumen.items()):
+                print(f"  Color {color}: {vertices}")
+ 
+        elif opcion == "2":
+            print("Hasta luego.")
+            break
+ 
+        else:
+            print("Opción no válida, intenta de nuevo.")
+ 
+ 
+if __name__ == "__main__":
+    _menu()
+ 
