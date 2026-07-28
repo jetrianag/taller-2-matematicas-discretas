@@ -18,3 +18,15 @@ def resumen_por_color(colores: dict) -> dict:
     for vertice, color in colores.items():
         resumen.setdefault(color, []).append(vertice)
     return resumen
+GRAFO_EJEMPLO = {
+    "Calculo1":    ["Fisica1", "Algebra"],
+    "Fisica1":     ["Calculo1", "Quimica"],
+    "Algebra":     ["Calculo1", "ProgBasica", "Discretas"],
+    "Quimica":     ["Fisica1", "Biologia"],
+    "ProgBasica":  ["Algebra", "Discretas", "EstructurasDatos"],
+    "Discretas":   ["Algebra", "ProgBasica", "EstructurasDatos"],
+    "Biologia":    ["Quimica", "Estadistica"],
+    "EstructurasDatos": ["ProgBasica", "Discretas", "BasesDatos"],
+    "Estadistica": ["Biologia", "BasesDatos"],
+    "BasesDatos":  ["EstructurasDatos", "Estadistica"],
+}
