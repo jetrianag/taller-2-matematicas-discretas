@@ -118,3 +118,70 @@ def simplificar(minterminos, num_vars, nombres_variables=None):
     expresion = " OR ".join(f"({p})" for p in productos)
     return elegidos, expresion
 
+
+# ---------------------------------------------------------
+# 3. Verificacion: comparar tabla de verdad original vs simplificada
+# ---------------------------------------------------------
+
+def tabla_desde_minterminos(minterminos, num_vars):
+    """Genera la tabla de verdad (dict: tupla_de_bits -> 0/1) a partir de los minterminos."""
+    tabla = {}
+    for combo in product([0, 1], repeat=num_vars):
+        n = int("".join(map(str, combo)), 2)
+        tabla[combo] = 1 if n in minterminos else 0
+    return tabla
+
+
+def evaluar_termino(termino, combo):
+    """Evalua un termino binario con '-' contra una combinacion concreta de bits."""
+    for bit, valor in zip(termino, combo):
+        if bit == "0" and valor != 0:
+            return False
+        if bit == "1" and valor != 1:
+            return False
+    return True
+
+
+def tabla_desde_terminos(terminos, num_vars):
+    """Genera la tabla de verdad de la expresion simplificada (OR de los terminos)."""
+    tabla = {}
+    for combo in product([0, 1], repeat=num_vars):
+        tabla[combo] = 1 if any(evaluar_termino(t, combo) for t in terminos) else 0
+    return tabla
+
+
+def verificar_equivalencia(minterminos, terminos, num_vars):
+    """Devuelve True si la tabla de verdad original y la simplificada coinciden en todas las filas."""
+    original = tabla_desde_minterminos(minterminos, num_vars)
+    simplificada = tabla_desde_terminos(terminos, num_vars)
+    return original == simplificada, original, simplificada
+
+
+def mostrar_caso(minterminos, num_vars, nombres_variables=None):
+    if nombres_variables is None:
+        nombres_variables = ["A", "B", "C", "D"][:num_vars]
+
+    print(f"\nMinterminos: {sorted(minterminos)}  (variables: {', '.join(nombres_variables)})")
+    elegidos, expresion = simplificar(minterminos, num_vars, nombres_variables)
+    print(f"Expresion simplificada: {expresion}")
+
+    ok, original, simplificada = verificar_equivalencia(minterminos, elegidos, num_vars)
+    print(f"Verificacion: la tabla original y la simplificada son {'IGUALES' if ok else 'DIFERENTES'}")
+
+    print(f"{'  '.join(nombres_variables)} | Original | Simplificada")
+    for combo in sorted(original):
+        fila = "  ".join(str(b) for b in combo)
+        print(f"{fila}  |    {original[combo]}     |     {simplificada[combo]}")
+
+
+if __name__ == "__main__":
+    # --- Caso de prueba sugerido: 3 variables, minterminos {1, 3, 5, 7} ---
+    # Con orden de variables A, B, C, el resultado esperado es equivalente a "C"
+    mostrar_caso(minterminos={1, 3, 5, 7}, num_vars=3, nombres_variables=["A", "B", "C"])
+
+    # --- Otro caso con 3 variables ---
+    mostrar_caso(minterminos={0, 2, 4, 6}, num_vars=3, nombres_variables=["A", "B", "C"])
+
+    # --- Caso con 4 variables ---
+    mostrar_caso(minterminos={0, 1, 2, 3, 8, 9, 10, 11}, num_vars=4, nombres_variables=["A", "B", "C", "D"])
+    
