@@ -38,7 +38,7 @@ def _menu():
         opcion = input("Elige una opción (1-2): ").strip()
  
         if opcion == "1":
-            colores = colorear_grafo_voraz(GRAFO_EJEMPLO)
+            colores = colorear_grafo(GRAFO_EJEMPLO)
             valido = es_coloreo_valido(GRAFO_EJEMPLO, colores)
             resumen = resumen_por_color(colores)
  
