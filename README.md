@@ -1,6 +1,6 @@
-# Taller 3 — Programación discreta
+# Taller 3, Matemáticas Discretas I
 
-**Matemáticas Discretas I — Universidad Nacional de Colombia**
+**Universidad Nacional de Colombia**
 Criptografía, grafos, álgebra de Boole, Shannon y un primer vistazo cuántico
 
 ## Integrantes
