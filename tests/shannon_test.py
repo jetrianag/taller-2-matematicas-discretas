@@ -20,3 +20,6 @@ class TestFrecuenciaTexto(unittest.TestCase):
     def test_incluye_espacios_como_simbolo(self):
         frecuencia = frecuencia_texto("A A")
         self.assertEqual(frecuencia, {"A": 2, " ": 1})
+        
+if __name__ == "__main__":
+    unittest.main()
