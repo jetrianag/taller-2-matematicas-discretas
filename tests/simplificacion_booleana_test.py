@@ -24,3 +24,6 @@ class TestFuncionesBasicas(unittest.TestCase):
     def test_se_combinan_terminos_identicos(self):
         # Dos términos iguales tienen 0 diferencias, no 1 -> no se combinan
         self.assertIsNone(se_combinan("101", "101"))
+
+if __name__ == "__main__":
+     unittest.main()
