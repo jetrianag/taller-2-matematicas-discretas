@@ -110,7 +110,7 @@ Con esto se ejecutan las 33 pruebas automatizadas del proyecto (mínimo 3 por pu
 | 2 | RSA de juguete | `src/cripto/rsa.py` | `tests/rsa_test.py` |
 | 3 | MPC básico (suma secreta) | `src/cripto/mpc_basico.py` | `tests/mpc_basico_test.py` |
 | 4 | Ruta más corta (Dijkstra) | `src/grafos/grafo.py`, `dijkstra.py` | `tests/dijkstra_test.py` |
-| 5 | Cierre de una estación | `src/grafos/cerrar_estacion.py` | `tests/cerrar_estacion_test.py` |
+| 5 | Cierre de una estación | `src/grafos/grafo.py`, `src/grafos/cerrar_estacion.py` | `tests/cerrar_estacion_test.py` |
 | 6 | Coloreo de grafos | `src/grafos/coloreo_grafos.py` | `tests/coloreo_grafos.py` |
 | 7 | Tablas de verdad y circuitos lógicos | `src/boole_shannon_compucuantic/tablas_verdad.py` | `tests/tablas_verdad_test.py` |
 | 8 | Simplificación booleana | `src/boole_shannon_compucuantic/simplificacion_booleana.py` | `tests/simplificacion_booleana_test.py` |
