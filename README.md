@@ -58,6 +58,8 @@ Cada punto está implementado como un módulo de Python independiente, con al me
 
 Clonar el repositorio y ubicarse en la raíz del proyecto. No se requiere instalar nada adicional, solo tener Python 3.
 
+Copiar y pegar el siguiente comando en la terminal del IDE: git clone https://github.com/jetrianag/taller-3-matematicas-discretas.git
+
 ### Bloque A — Criptografía
 
 ```bash
