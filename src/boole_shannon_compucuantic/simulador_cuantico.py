@@ -33,3 +33,10 @@ def aplicar_compuerta(nombre_compuerta, estado):
         raise ValueError(f"Compuerta desconocida: {nombre_compuerta}")
 
     return multiplicar_matriz_vector(matriz, estado)
+
+def calcular_probabilidades(estado):
+    # la probabilidad de medir cada resultado es la amplitud al cuadrado
+    alpha, beta = estado
+    prob_0 = alpha ** 2
+    prob_1 = beta ** 2
+    return prob_0, prob_1
