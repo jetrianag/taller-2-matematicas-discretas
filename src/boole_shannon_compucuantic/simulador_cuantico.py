@@ -40,3 +40,18 @@ def calcular_probabilidades(estado):
     prob_0 = alpha ** 2
     prob_1 = beta ** 2
     return prob_0, prob_1
+
+def simular_mediciones(prob_0, prob_1, num_mediciones=1000):
+    # simula mediciones repetidas: en cada una se saca un numero al azar
+    # y se decide 0 o 1 segun las probabilidades calculadas antes
+    conteo_0 = 0
+    conteo_1 = 0
+
+    for _ in range(num_mediciones):
+        r = random.random()
+        if r < prob_0:
+            conteo_0 += 1
+        else:
+            conteo_1 += 1
+
+    return conteo_0, conteo_1
