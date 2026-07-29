@@ -1,0 +1,6 @@
+# Este proyecto no usa librerías externas.
+# Todos los programas se implementan solo con la librería estándar de Python 3:
+#   math, random, heapq, itertools
+#
+# Para correr las pruebas se recomienda pytest (opcional, no es indispensable):
+pytest>=7.0
