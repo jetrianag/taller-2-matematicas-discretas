@@ -55,3 +55,24 @@ def simular_mediciones(prob_0, prob_1, num_mediciones=1000):
             conteo_1 += 1
 
     return conteo_0, conteo_1
+
+if __name__ == "__main__":
+    estado_inicial = [1, 0]  # |0>
+
+    print("=== Caso de prueba 1: X|0> ===")
+    resultado = aplicar_compuerta("X", estado_inicial)
+    print(f"Estado resultante: {resultado}  (esperado: [0, 1])")
+
+    print("\n=== Caso de prueba 2: H|0> ===")
+    resultado_h = aplicar_compuerta("H", estado_inicial)
+    print(f"Estado resultante: {resultado_h}")
+    prob_0, prob_1 = calcular_probabilidades(resultado_h)
+    print(f"Probabilidad de 0: {prob_0:.3f}, Probabilidad de 1: {prob_1:.3f}")
+    print("(esperado: cercano a 50% y 50%)")
+
+    conteo_0, conteo_1 = simular_mediciones(prob_0, prob_1, 1000)
+    print(f"Simulación de 1000 mediciones -> 0: {conteo_0} veces, 1: {conteo_1} veces")
+
+    print("\n=== Caso de prueba 3: HH|0> ===")
+    resultado_hh = aplicar_compuerta("H", resultado_h)
+    print(f"Estado resultante: {resultado_hh}  (esperado: cercano a [1, 0])")
